@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国大Qゼミ | 横浜の学習塾</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1a6b3a;
+    --green-main: #2d9155;
+    --green-mid: #3aad68;
+    --green-light: #5cc983;
+    --green-pale: #d4f2e0;
+    --green-bg: #f0faf4;
+    --yellow-accent: #f5d220;
+    --orange-accent: #f07b30;
+    --white: #ffffff;
+    --text-dark: #1a2e22;
+    --text-mid: #3a5445;
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(45,145,85,0.12);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-badge {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, var(--green-main), var(--green-dark));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(45,145,85,0.3);
+  }
+
+  .logo-badge span {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--yellow-accent);
+    letter-spacing: -2px;
+  }
+
+  .logo-text {
+    line-height: 1.2;
+  }
+
+  .logo-text .sub {
+    font-size: 11px;
+    color: var(--green-main);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .logo-text .main {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--text-dark);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+  }
+
+  nav { display: flex; gap: 6px; align-items: center; }
+
+  nav a {
+    text-decoration: none;
+    color: var(--text-mid);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  nav a:hover { background: var(--green-pale); color: var(--green-dark); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--orange-accent), #e86020) !important;
+    color: white !important;
+    border-radius: 10px !important;
+    box-shadow: 0 3px 10px rgba(240,123,48,0.35);
+  }
+
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(240,123,48,0.45) !important; background: linear-gradient(135deg, #f08040, var(--orange-accent)) !important; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, var(--green-dark) 0%, var(--green-main) 50%, var(--green-mid) 100%);
+    min-height: 520px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 600px 400px at 80% 50%, rgba(255,255,255,0.07) 0%, transparent 70%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Decorative circles */
+  .hero-deco {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.12;
+  }
+  .hero-deco-1 { width: 400px; height: 400px; background: white; top: -100px; right: -80px; }
+  .hero-deco-2 { width: 200px; height: 200px; background: var(--yellow-accent); bottom: -60px; left: 40%; }
+  .hero-deco-3 { width: 120px; height: 120px; background: white; top: 40px; left: 30%; opacity: 0.08; }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-copy { flex: 1; }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--yellow-accent);
+    color: var(--text-dark);
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 3px 10px rgba(245,210,32,0.4);
+  }
+
+  .hero h1 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    color: white;
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--yellow-accent);
+    display: block;
+  }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 36px;
+    max-width: 420px;
+  }
+
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--yellow-accent);
+    color: var(--text-dark);
+    font-size: 15px;
+    font-weight: 900;
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(245,210,32,0.5);
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(245,210,32,0.6); }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.18);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.4);
+    transition: all 0.25s;
+    backdrop-filter: blur(4px);
+  }
+
+  .btn-secondary:hover { background: rgba(255,255,255,0.28); transform: translateY(-2px); }
+
+  .hero-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px 28px;
+    width: 320px;
+    flex-shrink: 0;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+    animation: floatCard 4s ease-in-out infinite;
+  }
+
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .hero-card h3 {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--green-dark);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--green-pale);
+  }
+
+  .card-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .card-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+
+  .card-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--green-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .card-cta {
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--green-main), var(--green-dark));
+    color: white;
+    text-align: center;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 900;
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+    box-shadow: 0 4px 14px rgba(45,145,85,0.35);
+    transition: all 0.2s;
+  }
+
+  .card-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(45,145,85,0.45); }
+
+  /* ===== STATS BAR ===== */
+  .stats-bar {
+    background: var(--green-dark);
+    padding: 20px 0;
+  }
+
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--yellow-accent);
+    line-height: 1;
+  }
+
+  .stat-num span { font-size: 16px; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.75); font-weight: 500; margin-top: 4px; }
+
+  /* ===== SECTION SHARED ===== */
+  section { padding: 72px 24px; }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .section-title .en {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--green-main);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .section-title h2 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 900;
+    color: var(--text-dark);
+    line-height: 1.3;
+  }
+
+  .section-title h2 span {
+    color: var(--green-main);
+    border-bottom: 4px solid var(--yellow-accent);
+    padding-bottom: 2px;
+  }
+
+  /* ===== COURSES ===== */
+  .courses { background: var(--green-bg); }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+  }
+
+  .course-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(45,145,85,0.1);
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .course-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(45,145,85,0.2);
+  }
+
+  .course-card-top {
+    padding: 24px 22px 16px;
+    background: linear-gradient(135deg, var(--green-main), var(--green-dark));
+  }
+
+  .course-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .course-grade {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .course-name {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+    line-height: 1.3;
+  }
+
+  .course-card-body { padding: 18px 22px 22px; }
+
+  .course-desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .course-link {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green-main);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .course-link:hover { color: var(--green-dark); }
+
+  /* ===== 3Q PHILOSOPHY ===== */
+  .philosophy { background: white; }
+
+  .q3-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .q-card {
+    background: linear-gradient(160deg, var(--green-pale), #c8edd7);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  .q-card:hover { transform: scale(1.03); }
+
+  .q-card::before {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(45,145,85,0.12);
+  }
+
+  .q-letter {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--green-main);
+    line-height: 1;
+    margin-bottom: 4px;
+    position: relative;
+  }
+
+  .q-word {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--green-dark);
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+
+  .q-ja {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+  }
+
+  .q-desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* ===== FEATURES ===== */
+  .features { background: var(--green-bg); }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .feature-item {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    box-shadow: 0 2px 10px rgba(45,145,85,0.08);
+    border-left: 5px solid var(--green-light);
+    transition: all 0.25s;
+  }
+
+  .feature-item:hover { border-left-color: var(--green-dark); transform: translateX(4px); }
+
+  .feature-icon-wrap {
+    width: 48px;
+    height: 48px;
+    background: var(--green-pale);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+  .feature-title {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--text-dark);
+  }
+
+  .feature-desc { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+  /* ===== SCHOOLS ===== */
+  .schools { background: white; }
+
+  .schools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px;
+  }
+
+  .school-chip {
+    background: var(--green-bg);
+    border: 2px solid var(--green-pale);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .school-chip:hover {
+    background: var(--green-pale);
+    border-color: var(--green-light);
+    transform: translateY(-2px);
+  }
+
+  .school-area {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-main);
+    letter-spacing: 0.05em;
+  }
+
+  .school-name {
+    font-size: 15px;
+    font-weight: 900;
+    color: var(--text-dark);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+  }
+
+  /* ===== VOICE ===== */
+  .voice { background: var(--green-bg); }
+
+  .voice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+  .voice-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: 0 4px 14px rgba(45,145,85,0.1);
+    position: relative;
+  }
+
+  .voice-card::before {
+    content: '❝';
+    font-size: 48px;
+    color: var(--green-pale);
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    line-height: 1;
+  }
+
+  .voice-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-dark);
+    padding-top: 28px;
+    margin-bottom: 16px;
+  }
+
+  .voice-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green-main);
+    text-align: right;
+  }
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--green-dark), var(--green-main));
+    padding: 64px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(245,210,32,0.08) 0%, transparent 60%);
+  }
+
+  .cta-banner h2 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: clamp(24px, 3.5vw, 42px);
+    font-weight: 900;
+    color: white;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-banner p {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    margin-bottom: 36px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+  .cta-btn-1 {
+    background: var(--yellow-accent);
+    color: var(--text-dark);
+    font-size: 16px;
+    font-weight: 900;
+    padding: 18px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(245,210,32,0.5);
+    transition: all 0.25s;
+  }
+
+  .cta-btn-1:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(245,210,32,0.6); }
+
+  .cta-btn-2 {
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.5);
+    transition: all 0.25s;
+  }
+
+  .cta-btn-2:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+  /* ===== FOOTER ===== */
+  footer { background: var(--green-dark); color: rgba(255,255,255,0.8); padding: 48px 24px 28px; }
+
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .footer-logo .logo-badge { margin-bottom: 10px; }
+  .footer-logo p { font-size: 13px; line-height: 1.7; max-width: 240px; }
+
+  .footer-links h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+  }
+
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-links ul a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .footer-links ul a:hover { color: white; }
+
+  .footer-contact {
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+
+  .footer-contact h4 { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+  .footer-contact .tel { font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 26px; font-weight: 900; color: var(--yellow-accent); letter-spacing: 0.05em; }
+  .footer-contact .hours { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+  .footer-bottom { text-align: center; font-size: 12px; color: rgba(255,255,255,0.5); }
+
+  /* ===== SCROLL ANIMATION ===== */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero-inner { flex-direction: column; gap: 36px; }
+    .hero-card { width: 100%; max-width: 360px; animation: none; }
+    .q3-grid { grid-template-columns: 1fr; }
+    nav a:not(.nav-cta) { display: none; }
+    .footer-top { flex-direction: column; gap: 28px; }
+    .hero h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-badge"><span>Q</span></div>
+      <div class="logo-text">
+        <div class="sub">KOKUDAI Q ZEMI</div>
+        <div class="main">国大Ｑゼミ</div>
+      </div>
+    </a>
+    <nav>
+      <a href="#">Qゼミとは</a>
+      <a href="#">コース案内</a>
+      <a href="#">校舎一覧</a>
+      <a href="#">合格実績</a>
+      <a href="#">よくある質問</a>
+      <a href="#" class="nav-cta">無料体験申込</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-deco hero-deco-1"></div>
+  <div class="hero-deco hero-deco-2"></div>
+  <div class="hero-deco hero-deco-3"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-badge">🌱 横浜・川崎エリアの学習塾</div>
+      <h1>
+        キミの可能性を<br>
+        <em>ともに咲かせよう。</em>
+      </h1>
+      <p class="hero-sub">
+        国大Qゼミは、Quality（質）・Quantity（量）・Question（質問）の3つのQを大切に、小学1年生から高卒生まで、一人ひとりに寄り添った"手とり足とり"の指導を続けています。
+      </p>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary">✏️ 無料体験を申し込む</a>
+        <a href="#" class="btn-secondary">資料請求はこちら</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h3>🎯 Qゼミで選べるコース</h3>
+      <ul class="card-list">
+        <li><div class="card-dot">📚</div>小学部・中学受験コース</li>
+        <li><div class="card-dot">🏫</div>公立中学進学コース</li>
+        <li><div class="card-dot">📐</div>高等部受験コース</li>
+        <li><div class="card-dot">👤</div>個別学習コース</li>
+        <li><div class="card-dot">🤖</div>AIオーダーメイド学習</li>
+        <li><div class="card-dot">📖</div>ことばの学校</li>
+      </ul>
+      <a href="#" class="card-cta">コース詳細を見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">35<span>年以上</span></div>
+      <div class="stat-label">指導実績</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">20<span>校舎以上</span></div>
+      <div class="stat-label">横浜・川崎エリア</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">小1<span>〜</span>高卒</div>
+      <div class="stat-label">幅広い学年に対応</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3<span>つの</span>Q</div>
+      <div class="stat-label">独自の教育理念</div>
+    </div>
+  </div>
+</div>
+
+<!-- COURSES -->
+<section class="courses">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <span class="en">COURSE</span>
+      <h2><span>目標に合わせた</span>コースを用意しています</h2>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card fade-up">
+        <div class="course-card-top">
+          <div class="course-icon">🏆</div>
+          <div class="course-grade">小3〜小6</div>
+          <div class="course-name">中学受験コース</div>
+        </div>
+        <div class="course-card-body">
+          <p class="course-desc">少人数制で徹底指導。授業後の「質問タイム」で、分からないことはその日に解決します。</p>
+          <a href="#" class="course-link">詳しく見る →</a>
+        </div>
+      </div>
+
+      <div class="course-card fade-up">
+        <div class="course-card-top" style="background: linear-gradient(135deg,#2a8faa,#1b6680)">
+          <div class="course-icon">📘</div>
+          <div class="course-grade">小1〜中3</div>
+          <div class="course-name">公立中学進学コース</div>
+        </div>
+        <div class="course-card-body">
+          <p class="course-desc">定期テスト対策から公立高校受験まで。基礎力を固め、内申点アップを目指します。</p>
+          <a href="#" class="course-link">詳しく見る →</a>
+        </div>
+      </div>
+
+      <div class="course-card fade-up">
+        <div class="course-card-top" style="background: linear-gradient(135deg,#9b59b6,#6c3483)">
+          <div class="course-icon">🎓</div>
+          <div class="course-grade">高1〜高卒生</div>
+          <div class="course-name">高等部受験コース</div>
+        </div>
+        <div class="course-card-body">
+          <p class="course-desc">大学受験に向け、志望校合格から逆算したカリキュラムで効率よく学力を伸ばします。</p>
+          <a href="#" class="course-link">詳しく見る →</a>
+        </div>
+      </div>
+
+      <div class="course-card fade-up">
+        <div class="course-card-top" style="background: linear-gradient(135deg,#e07b30,#b8561a)">
+          <div class="course-icon">👤</div>
+          <div class="course-grade">小1〜高卒生</div>
+          <div class="course-name">個別学習コース</div>
+        </div>
+        <div class="course-card-body">
+          <p class="course-desc">1対1で集中、成果を最大化。担任制で学習計画を立て、着実にステップアップ。</p>
+          <a href="#" class="course-link">詳しく見る →</a>
+        </div>
+      </div>
+
+      <div class="course-card fade-up">
+        <div class="course-card-top" style="background: linear-gradient(135deg,#2ecc71,#1a9e52)">
+          <div class="course-icon">🤖</div>
+          <div class="course-grade">中1〜高卒生</div>
+          <div class="course-name">atama+コース</div>
+        </div>
+        <div class="course-card-body">
+          <p class="course-desc">AIオーダーメイド学習で、分かるまでの最短ルートを走ります。弱点を自動分析。</p>
+          <a href="#" class="course-link">詳しく見る →</a>
+        </div>
+      </div>
+
+      <div class="course-card fade-up">
+        <div class="course-card-top" style="background: linear-gradient(135deg,#f0c040,#c89a10)">
+          <div class="course-icon">📖</div>
+          <div class="course-grade">小1〜</div>
+          <div class="course-name">ことばの学校</div>
+        </div>
+        <div class="course-card-body">
+          <p class="course-desc">読書を通して読書スピード・語彙力・読解力を養います。全科目の基礎となる国語力を育成。</p>
+          <a href="#" class="course-link">詳しく見る →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <span class="en">PHILOSOPHY</span>
+      <h2>なぜ「Ｑゼミ」なのか？<br><span>3つのQが、学力を伸ばす</span></h2>
+    </div>
+    <div class="q3-grid">
+      <div class="q-card fade-up">
+        <div class="q-letter">Q</div>
+        <div class="q-word">Quality</div>
+        <div class="q-ja">学習の「質」</div>
+        <p class="q-desc">ただやるだけでなく、理解の深さにこだわります。わかった！の積み重ねが確かな実力につながります。</p>
+      </div>
+      <div class="q-card fade-up" style="animation-delay:0.1s">
+        <div class="q-letter">Q</div>
+        <div class="q-word">Quantity</div>
+        <div class="q-ja">学習の「量」</div>
+        <p class="q-desc">適切な演習量が自信を生みます。実行ノートで自学自習の習慣を身につけ、自ら学べる力を育てます。</p>
+      </div>
+      <div class="q-card fade-up" style="animation-delay:0.2s">
+        <div class="q-letter">Q</div>
+        <div class="q-word">Question</div>
+        <div class="q-ja">「質問」する習慣</div>
+        <p class="q-desc">授業後の質問タイムで疑問をその日のうちに解決。質問できる環境が、深い理解を生みます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <span class="en">FEATURES</span>
+      <h2>Qゼミが選ばれる<span>5つの理由</span></h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item fade-up">
+        <div class="feature-icon-wrap">🎯</div>
+        <div class="feature-title">担任制のきめ細かい指導</div>
+        <p class="feature-desc">受験専門スタッフが担任となり、一人ひとりの学習計画を作成します。</p>
+      </div>
+      <div class="feature-item fade-up">
+        <div class="feature-icon-wrap">📱</div>
+        <div class="feature-title">安心・安全メールシステム</div>
+        <p class="feature-desc">入退室管理システムで、塾到着・退室時に保護者へ自動メールが届きます。</p>
+      </div>
+      <div class="feature-item fade-up">
+        <div class="feature-icon-wrap">🎬</div>
+        <div class="feature-title">QAMAS（家庭用解説動画）</div>
+        <p class="feature-desc">自宅でも授業の内容を動画で復習できるQゼミオリジナルの学習支援ツール。</p>
+      </div>
+      <div class="feature-item fade-up">
+        <div class="feature-icon-wrap">📓</div>
+        <div class="feature-title">実行ノートで自学力UP</div>
+        <p class="feature-desc">Qゼミオリジナルツール「実行ノート」で、自分で学べる習慣を楽しく育てます。</p>
+      </div>
+      <div class="feature-item fade-up">
+        <div class="feature-icon-wrap">🔄</div>
+        <div class="feature-title">無料振替授業制度</div>
+        <p class="feature-desc">欠席した場合も無料で振替授業が受けられるので、安心して通えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOOLS -->
+<section class="schools">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <span class="en">SCHOOL</span>
+      <h2>横浜・川崎エリアに<span>展開中の校舎</span></h2>
+    </div>
+    <div class="schools-grid fade-up">
+      <a href="#" class="school-chip"><div class="school-area">横浜市</div><div class="school-name">横浜校</div></a>
+      <a href="#" class="school-chip"><div class="school-area">横浜市</div><div class="school-name">関内校</div></a>
+      <a href="#" class="school-chip"><div class="school-area">横浜市</div><div class="school-name">弥生台校</div></a>
+      <a href="#" class="school-chip"><div class="school-area">横浜市</div><div class="school-name">上永谷校</div></a>
+      <a href="#" class="school-chip"><div class="school-area">横浜市</div><div class="school-name">港南台校</div></a>
+      <a href="#" class="school-chip"><div class="school-area">横浜市</div><div class="school-name">上大岡校</div></a>
+      <a href="#" class="school-chip"><div class="school-area">川崎市</div><div class="school-name">川崎校</div></a>
+      <a href="#" class="school-chip"><div class="school-area">川崎市</div><div class="school-name">武蔵小杉校</div></a>
+    </div>
+    <div style="text-align:center; margin-top:32px;">
+      <a href="#" class="btn-primary" style="display:inline-flex; background: linear-gradient(135deg, var(--green-main), var(--green-dark)); color:white; box-shadow: 0 4px 16px rgba(45,145,85,0.35);">📍 全校舎一覧を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="voice">
+  <div class="section-inner">
+    <div class="section-title fade-up">
+      <span class="en">VOICE</span>
+      <h2>生徒・保護者からの<span>うれしいお声</span></h2>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card fade-up">
+        <p class="voice-text">高1で英語の偏差値が40台だったのが、高3では60を超えました。担当の先生が学習計画をしっかり立ててくれて、毎回の授業がとても充実していました。</p>
+        <div class="voice-name">私立K高校 3年・女子</div>
+      </div>
+      <div class="voice-card fade-up">
+        <p class="voice-text">体験授業を受けた後、進路のことも親身になって相談してくれたので安心して入会を決めました。先生方がとても温かく、子どもも楽しく通えています。</p>
+        <div class="voice-name">小5男子の保護者様</div>
+      </div>
+      <div class="voice-card fade-up">
+        <p class="voice-text">授業後の質問タイムがあるので、その日のうちに疑問を解消できるのが本当に助かります。「わかった！」という体験を積み重ねることで自信がつきました。</p>
+        <div class="voice-name">中2男子・本人</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>まずは、無料体験授業へ。</h2>
+  <p>お子さまの学力や目標に合ったコースを、経験豊富なスタッフが丁寧にご提案します。</p>
+  <div class="cta-btns">
+    <a href="#" class="cta-btn-1">✏️ 無料体験を申し込む</a>
+    <a href="#" class="cta-btn-2">📄 資料請求はこちら</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <div class="logo" style="margin-bottom:12px;">
+          <div class="logo-badge"><span>Q</span></div>
+          <div class="logo-text">
+            <div class="sub" style="color:rgba(255,255,255,0.6)">KOKUDAI Q ZEMI</div>
+            <div class="main" style="color:white">国大Ｑゼミ</div>
+          </div>
+        </div>
+        <p>横浜国立大学発祥の学習塾。Quality・Quantity・Questionの3Qで、子どもたちの可能性を最大限に引き出します。</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>コース案内</h4>
+        <ul>
+          <li><a href="#">中学受験コース</a></li>
+          <li><a href="#">公立中学進学コース</a></li>
+          <li><a href="#">高等部受験コース</a></li>
+          <li><a href="#">個別学習コース</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Qゼミについて</h4>
+        <ul>
+          <li><a href="#">Qゼミとは</a></li>
+          <li><a href="#">教育理念</a></li>
+          <li><a href="#">合格実績</a></li>
+          <li><a href="#">よくある質問</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>総合インフォメーション（月〜金 10:00〜18:00）</h4>
+        <div class="tel">0120-26-3149</div>
+        <div class="hours">〒221-0056 横浜市神奈川区金港町5-32 ベイフロント横浜3F</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 国大Qゼミ All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll fade-up animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

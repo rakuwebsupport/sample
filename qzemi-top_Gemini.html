@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【サンプル】国大Qゼミ トップページ リニューアル案</title>
+    <style>
+        /* 全体のスタイル定義：理究の学童をイメージした優しい緑と清潔感のある白 */
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            color: #333333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #fcfdfa;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: #ffffff;
+            border-bottom: 4px solid #3CB371; /* プライまりグリーン */
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-area h1 {
+            color: #2E8B57;
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo-area span {
+            font-size: 11px;
+            color: #666666;
+            display: block;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #2E8B57;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        nav ul li a.btn-cta {
+            background-color: #3CB371;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        nav ul li a.btn-cta:hover {
+            background-color: #2E8B57;
+        }
+
+        /* メインビジュアル */
+        .hero {
+            background-color: #E8F5E9; /* 薄い緑の背景 */
+            padding: 60px 5%;
+            text-align: center;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .hero h2 {
+            color: #2E8B57;
+            font-size: 32px;
+            margin: 0 0 15px 0;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 16px;
+            color: #555555;
+            max-width: 700px;
+            margin: 0 auto 25px auto;
+        }
+        .hero .cta-large {
+            display: inline-block;
+            background-color: #FF8C00; /* アクセントのオレンジ */
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* コンテンツ共通 */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h2.section-title {
+            color: #2E8B57;
+            border-left: 6px solid #3CB371;
+            padding-left: 12px;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .section-desc {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 30px;
+        }
+
+        /* 特徴（3カラム） */
+        .features {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .feature-card {
+            background-color: #ffffff;
+            border: 1px solid #E0E0E0;
+            border-top: 5px solid #3CB371;
+            border-radius: 4px;
+            padding: 20px;
+            flex: 1;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .feature-card h3 {
+            color: #2E8B57;
+            font-size: 17px;
+            margin-top: 0;
+        }
+        .feature-card p {
+            font-size: 13px;
+            color: #555555;
+            margin-bottom: 0;
+        }
+
+        /* コース案内テーブル */
+        .course-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .course-table th {
+            background-color: #3CB371;
+            color: #ffffff;
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #3CB371;
+        }
+        .course-table td {
+            padding: 15px;
+            border: 1px solid #E0E0E0;
+            background-color: #ffffff;
+        }
+        .course-table tr:nth-child(even) td {
+            background-color: #F9F9F9;
+        }
+        .course-grade {
+            font-weight: bold;
+            color: #2E8B57;
+            width: 15%;
+        }
+        .course-name {
+            font-weight: bold;
+            width: 30%;
+        }
+
+        /* フッター */
+        footer {
+            background-color: #2E8B57;
+            color: #ffffff;
+            padding: 40px 5% 20px 5%;
+            text-align: center;
+            margin-top: 60px;
+        }
+        footer p.footer-logo {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+        footer p.footer-sub {
+            margin: 0 0 20px 0;
+            color: #E8F5E9;
+            font-size: 13px;
+        }
+        footer p.copyright {
+            margin: 0;
+            font-size: 11px;
+            color: #C8E6C9;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1>国大Qゼミ</h1>
+            <span>横浜の学習塾：小学生・中学生・高校生対象の進学塾</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Qゼミについて</a></li>
+                <li><a href="#">コース・料金</a></li>
+                <li><a href="#">教室一覧</a></li>
+                <li><a href="#">合格実績</a></li>
+                <li><a href="#" class="btn-cta">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>「自ら学ぶ子」を育てる。</h2>
+        <p>地域の学校カリキュラムやテスト傾向を熟知した講師陣が、<br>一人ひとりの目標達成と「自学者」への成長を最短距離で導きます。</p>
+        <a href="#" class="cta-large">無料体験授業のお申し込みはこちら</a>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">国大Qゼミが選ばれる3つの理由</h2>
+        <p class="section-desc">理究グループの安心な運営体制と、地域密着型の専門指導により、確実な学習効果を提供します。</p>
+        
+        <div class="features">
+            <div class="feature-card">
+                <h3>1. 自ら学ぶ子「自学者」の育成</h3>
+                <p>ただ教えられるだけでなく、目標を持って学習計画を立て、分からないことは自ら質問して解決できる能動的な生徒像を目指します。</p>
+            </div>
+            <div class="feature-card">
+                <h3>2. 地域・学校に合わせた最適学習</h3>
+                <p>地元の小・中学校のカリキュラムや定期テスト傾向を徹底分析。学校別の対策から日々の課題フォローまで網羅します。</p>
+            </div>
+            <div class="feature-card">
+                <h3>3. 目的に合わせた柔軟なコース</h3>
+                <p>集団指導と完全個別指導をご用意。中学受験、高校受験、大学受験まで一人ひとりの志望校やレベルにフィットします。</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">目的別コースのご案内</h2>
+        <p class="section-desc">学年やお子さまの目標に合わせた最適なカリキュラムをご提案いたします。</p>
+        
+        <table class="course-table">
+            <thead>
+                <tr>
+                    <th>対象学年</th>
+                    <th>主要コース</th>
+                    <th>特徴</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="course-grade">小学生</td>
+                    <td class="course-name">中学受験コース / 理英会アドバンス</td>
+                    <td>基礎力の定着から、難関中学受験に求められる深い思考力・表現力を養います。</td>
+                </tr>
+                <tr>
+                    <td class="course-grade">中学生</td>
+                    <td class="course-name">高校受験コース / 定期テスト対策</td>
+                    <td>内申点対策としての定期テスト強化に加え、第一志望合格に向けた得点力を網羅します。</td>
+                </tr>
+                <tr>
+                    <td class="course-grade">高校生</td>
+                    <td class="course-name">駿台Diverse / 代ゼミサテライン</td>
+                    <td>質の高い映像授業やAI学習管理システムを駆使し、現役大学合格を引き寄せます。</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p class="footer-logo">国大Qゼミ（理究グループ）</p>
+        <p class="footer-sub">神奈川県内（横浜・関内・川崎・大船・市ヶ尾など）を中心に多数展開</p>
+        <p class="copyright">&copy; National University Q Seminar / Riqu All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
