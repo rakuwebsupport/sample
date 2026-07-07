@@ -29,19 +29,23 @@ window.addEventListener("load", () => {
 
 const header = document.getElementById("header");
 
-window.addEventListener("scroll", () => {
+if (header) {
 
-    if (window.scrollY > 80) {
+    window.addEventListener("scroll", () => {
 
-        header.classList.add("scrolled");
+        if (window.scrollY > 80) {
 
-    } else {
+            header.classList.add("scrolled");
 
-        header.classList.remove("scrolled");
+        } else {
 
-    }
+            header.classList.remove("scrolled");
 
-});
+        }
+
+    });
+
+}
 
 /* ==========================================================
    Fade Animation
@@ -345,70 +349,47 @@ if (footer) {
 
 }
 
-console.log("Frontier Construction Ready.");
+console.log("Rakusapo Construction Ready.");
 
 
 /* ==========================================
 Works Slider
 ========================================== */
 
-const slides=document.querySelector(".slides");
+const slides = document.querySelector(".slides");
+const slide = document.querySelectorAll(".slide");
+const next = document.querySelector(".next");
+const prev = document.querySelector(".prev");
 
-const slide=document.querySelectorAll(".slide");
+if (slides && next && prev) {
 
-const next=document.querySelector(".next");
+    let index = 0;
 
-const prev=document.querySelector(".prev");
+    function moveSlide() {
+        slides.style.transform = `translateX(-${index * 100}%)`;
+    }
 
-let index=0;
+    next.addEventListener("click", () => {
+        index++;
+        if(index >= slide.length) index = 0;
+        moveSlide();
+    });
 
-function moveSlide(){
+    prev.addEventListener("click", () => {
+        index--;
+        if(index < 0) index = slide.length - 1;
+        moveSlide();
+    });
 
-slides.style.transform=`translateX(-${index*100}%)`;
-
-}
-
-next.addEventListener("click",()=>{
-
-index++;
-
-if(index>=slide.length){
-
-index=0;
-
-}
-
-moveSlide();
-
-});
-
-prev.addEventListener("click",()=>{
-
-index--;
-
-if(index<0){
-
-index=slide.length-1;
+    setInterval(() => {
+        index++;
+        if(index >= slide.length) index = 0;
+        moveSlide();
+    },5000);
 
 }
 
-moveSlide();
 
-});
-
-setInterval(()=>{
-
-index++;
-
-if(index>=slide.length){
-
-index=0;
-
-}
-
-moveSlide();
-
-},5000);
 
 
 /*=========================================
@@ -515,9 +496,7 @@ direction=1;
 
 }
 
-after.style.width=percent+"%";
 
-line.style.left=percent+"%";
 
 },16);
 
@@ -556,152 +535,187 @@ parallax.style.backgroundPositionY=-(y*0.25)+"px";
 
 });
 
+
 /*==================================
 Floating CTA
 ==================================*/
 
 const floatingCTA = document.querySelector(".floating-cta");
 
-window.addEventListener("scroll",()=>{
+if (floatingCTA) {
 
-if(window.scrollY>400){
+    window.addEventListener("scroll", () => {
 
-floatingCTA.style.opacity="1";
+        if (window.scrollY > 400) {
 
-floatingCTA.style.transform="translateY(0)";
+            floatingCTA.style.opacity = "1";
+            floatingCTA.style.transform = "translateY(0)";
 
-}else{
+        } else {
 
-floatingCTA.style.opacity="0";
+            floatingCTA.style.opacity = "0";
+            floatingCTA.style.transform = "translateY(30px)";
 
-floatingCTA.style.transform="translateY(30px)";
+        }
+
+    });
 
 }
-
-});
 
 /*====================================
 Gallery Modal
 ====================================*/
 
-const gallery=document.querySelectorAll(".gallery-image");
+const modal = document.getElementById("imageModal");
 
-const modal=document.getElementById("imageModal");
+if (modal) {
 
-const modalImg=document.getElementById("modalImage");
+    const gallery = document.querySelectorAll(".gallery-image");
+    const modalImg = document.getElementById("modalImage");
+    const closeBtn = document.querySelector(".modal-close");
+    const nextImg = document.querySelector(".next-image");
+    const prevImg = document.querySelector(".prev-image");
 
-const closeBtn=document.querySelector(".modal-close");
+    let current = 0;
 
-const nextImg=document.querySelector(".next-image");
+    // 画像クリック
+    gallery.forEach((img, index) => {
 
-const prevImg=document.querySelector(".prev-image");
+        img.addEventListener("click", () => {
 
-let current=0;
+            current = index;
 
-gallery.forEach((img,index)=>{
+            modal.classList.add("active");
 
-img.addEventListener("click",()=>{
+            modalImg.src = img.src;
 
-current=index;
+        });
 
-modal.classList.add("active");
+    });
 
-modalImg.src=img.src;
+    // 閉じる
+    if (closeBtn) {
 
-});
+        closeBtn.addEventListener("click", () => {
 
-});
+            modal.classList.remove("active");
 
-closeBtn.addEventListener("click",()=>{
+        });
 
-modal.classList.remove("active");
+    }
 
-});
+    // 背景クリック
+    modal.addEventListener("click", (e) => {
 
-modal.addEventListener("click",(e)=>{
+        if (e.target === modal) {
 
-if(e.target===modal){
+            modal.classList.remove("active");
 
-modal.classList.remove("active");
+        }
+
+    });
+
+    // 表示更新
+    function showImage() {
+
+        modalImg.src = gallery[current].src;
+
+    }
+
+    // 次へ
+    if (nextImg) {
+
+        nextImg.addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+            current++;
+
+            if (current >= gallery.length) {
+
+                current = 0;
+
+            }
+
+            showImage();
+
+        });
+
+    }
+
+    // 前へ
+    if (prevImg) {
+
+        prevImg.addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+            current--;
+
+            if (current < 0) {
+
+                current = gallery.length - 1;
+
+            }
+
+            showImage();
+
+        });
+
+    }
+
+    // キーボード操作
+    document.addEventListener("keydown", (e) => {
+
+        if (!modal.classList.contains("active")) return;
+
+        switch (e.key) {
+
+            case "Escape":
+                modal.classList.remove("active");
+                break;
+
+            case "ArrowRight":
+                current++;
+                if (current >= gallery.length) current = 0;
+                showImage();
+                break;
+
+            case "ArrowLeft":
+                current--;
+                if (current < 0) current = gallery.length - 1;
+                showImage();
+                break;
+
+        }
+
+    });
 
 }
 
-});
 
-function showImage(){
+/*====================================
+News Date Auto Update
+====================================*/
 
-modalImg.src=gallery[current].src;
+window.addEventListener("DOMContentLoaded", () => {
 
-}
+    const newsDates = document.querySelectorAll(".news-date");
 
-nextImg.addEventListener("click",(e)=>{
+    newsDates.forEach(date => {
 
-e.stopPropagation();
+        const offset = Number(date.dataset.days || 0);
 
-current++;
+        const d = new Date();
 
-if(current>=gallery.length){
+        d.setDate(d.getDate() + offset);
 
-current=0;
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, "0");
+        const dd = String(d.getDate()).padStart(2, "0");
 
-}
+        date.textContent = `${yyyy}.${mm}.${dd}`;
 
-showImage();
-
-});
-
-prevImg.addEventListener("click",(e)=>{
-
-e.stopPropagation();
-
-current--;
-
-if(current<0){
-
-current=gallery.length-1;
-
-}
-
-showImage();
-
-});
-
-document.addEventListener("keydown",(e)=>{
-
-if(!modal.classList.contains("active")) return;
-
-if(e.key==="Escape"){
-
-modal.classList.remove("active");
-
-}
-
-if(e.key==="ArrowRight"){
-
-current++;
-
-if(current>=gallery.length){
-
-current=0;
-
-}
-
-showImage();
-
-}
-
-if(e.key==="ArrowLeft"){
-
-current--;
-
-if(current<0){
-
-current=gallery.length-1;
-
-}
-
-showImage();
-
-}
+    });
 
 });
