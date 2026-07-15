@@ -5,23 +5,63 @@
 
 window.addEventListener("load", () => {
 
-    const loading = document.getElementById("loading");
+    // const loading = document.getElementById("loading");
 
-    if (loading) {
+    // if (loading) {
 
-        setTimeout(()=>{
+    //     setTimeout(()=>{
 
-            loading.style.opacity="0";
+    //         loading.style.opacity="0";
 
-            loading.style.visibility="hidden";
+    //         loading.style.visibility="hidden";
 
-        },2500);
+    //     },2500);
+
+    // }
 
 
+    const chars = document.querySelectorAll(".hero-title span");
 
-    }
+    chars.forEach((char, index) => {
+
+        setTimeout(() => {
+
+            char.style.opacity = "1";
+            char.style.transform = "translateY(0)";
+            char.style.filter = "blur(0)";
+
+        }, index * 80);
+
+    });
+
+
 
 });
+
+
+/*====================================
+hero-title　animation
+====================================*/
+
+// window.addEventListener("load", () => {
+
+//     const chars = document.querySelectorAll(".hero-title span");
+
+//     chars.forEach((char, index) => {
+
+//         setTimeout(() => {
+
+//             char.style.opacity = "1";
+//             char.style.transform = "translateY(0)";
+//             char.style.filter = "blur(0)";
+
+//         }, index * 80);
+
+//     });
+
+// });
+
+
 
 /* ==========================================================
    Header Scroll
@@ -223,17 +263,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    Hero Fade
 ========================================================== */
 
-const hero = document.querySelector("#hero");
+// const hero = document.querySelector("#hero");
 
-window.addEventListener("scroll", () => {
+// window.addEventListener("scroll", () => {
 
-    if (!hero) return;
+//     if (!hero) return;
 
-    const value = window.scrollY;
+//     const value = window.scrollY;
 
-    hero.style.opacity = Math.max(1 - value / 700, 0);
+//     hero.style.opacity = Math.max(1 - value / 700, 0);
 
-});
+// });
 
 /* ==========================================================
    Button Hover Ripple
@@ -721,25 +761,3 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-/*====================================
-hero-title　animation
-====================================*/
-
-// window.addEventListener("load", () => {
-
-//     const chars = document.querySelectorAll(".hero-title span");
-
-//     chars.forEach((char, index) => {
-
-//         setTimeout(() => {
-
-//             char.style.opacity = "1";
-//             char.style.transform = "translateY(0)";
-//             char.style.filter = "blur(0)";
-
-//         }, index * 80);
-
-//     });
-
-// });
