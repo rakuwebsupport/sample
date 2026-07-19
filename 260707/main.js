@@ -3,41 +3,26 @@
    main.js
 ========================================================== */
 
+
 window.addEventListener("load", () => {
 
-    // const loading = document.getElementById("loading");
+    const loading = document.getElementById("loading");
 
-    // if (loading) {
+    if (loading) {
 
-    //     setTimeout(()=>{
+        setTimeout(()=>{
 
-    //         loading.style.opacity="0";
+            loading.style.opacity="0";
 
-    //         loading.style.visibility="hidden";
+            loading.style.visibility="hidden";
 
-    //     },2500);
-
-    // }
+        },2500);
 
 
-    const chars = document.querySelectorAll(".hero-title span");
 
-    chars.forEach((char, index) => {
-
-        setTimeout(() => {
-
-            char.style.opacity = "1";
-            char.style.transform = "translateY(0)";
-            char.style.filter = "blur(0)";
-
-        }, index * 80);
-
-    });
-
-
+    }
 
 });
-
 
 /*====================================
 hero-title　animation

@@ -3,6 +3,7 @@
    main.js
 ========================================================== */
 
+
 window.addEventListener("load", () => {
 
     const loading = document.getElementById("loading");
@@ -17,11 +18,28 @@ window.addEventListener("load", () => {
 
         },2500);
 
-
-
     }
 
+
+    const chars = document.querySelectorAll(".hero-title span");
+
+    chars.forEach((char, index) => {
+
+        setTimeout(() => {
+
+            char.style.opacity = "1";
+            char.style.transform = "translateY(0)";
+            char.style.filter = "blur(0)";
+
+        }, index * 80);
+
+    });
+
+
+
 });
+
+
 
 /* ==========================================================
    Header Scroll
