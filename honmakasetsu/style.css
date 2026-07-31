@@ -181,19 +181,15 @@ height:48px;
 
 }
 
+nav ul{
 
-@media(max-width:768px){
-    nav ul{
+display:flex;
 
-    display:flex;
+gap:40px;
 
-    gap:40px;
+align-items:center;
 
-    align-items:center;
-
-    }
 }
-
 
 nav a{
 
