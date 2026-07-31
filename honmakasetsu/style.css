@@ -181,15 +181,19 @@ height:48px;
 
 }
 
-nav ul{
 
-display:flex;
+@media(max-width:768px){
+    nav ul{
 
-gap:40px;
+    display:flex;
 
-align-items:center;
+    gap:40px;
 
+    align-items:center;
+
+    }
 }
+
 
 nav a{
 
